@@ -1,44 +1,60 @@
-import React, { Component } from 'react'; 
+import React, {Component} from 'react';
 
 
 export default class PersonData extends Component {
 
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-        userData: {},
+        this.state = {
+            userData: null,
+        }
     }
-}
 
-CALPERSID = this.props.calpersid;
+    CALPERSID = this.props.data;
 
-componentDidMount() {
-  fetch("http://ws-timo2-mycalpers.calpers.ca.gov/env08ws/restservices-interface/participant?cid="+this.CALPERSID)
-      .then((response) => response.json())
-      .then((responseData) => {
-          this.setState({userData: responseData[0]});
-          console.log(this.state.userData);
-      })
+    componentWillReceiveProps() {
+        console.log("here");
+        fetch("http://ws-timo2-mycalpers.calpers.ca.gov/env08ws/restservices-interface/participant?cid=" + this.props.data)
+            .then((response) => response.json())
+            .then((responseData) => {
+                this.setState({userData: responseData[0]});
+            })
+        console.log(this.state);
+    }
 
-}
+    componentDidMount() {
+        fetch("http://ws-timo2-mycalpers.calpers.ca.gov/env08ws/restservices-interface/participant?cid=" + this.CALPERSID)
+            .then((response) => response.json())
+            .then((responseData) => {
+                this.setState({userData: responseData[0]});
+            })
 
-
+    }
 
 
     render() {
-      console.log(this.props);
-      return (
-     <div>
-       <h1>Welcome back, {this.state.userData.firstName}</h1>
-       <p>First Name: {this.state.userData.firstName}</p>
-       <p>Last Name: {this.state.userData.lastName}</p>
-       <p>Membership Date: {this.state.userData.membershipDate}</p>
-       <p>First Name: {this.state.userData.firstName}</p>
-             </div>
-      );
+        let {userData} = this.state;
+        let tempuserData = null;
+
+        if (userData !== null) {
+            tempuserData = (
+                <div>
+                    {this.CALPERSID}
+                    <h1>Welcome back, {userData.firstName}</h1>
+                    <p>First Name: {userData.firstName}</p>
+                    <p>Last Name: {userData.lastName}</p>
+                    <p>Membership Date: {userData.membershipDate}</p>
+                    <p>First Name: {userData.firstName}</p>
+                </div>
+            );
+        }
+
+        return (
+            tempuserData
+        );
     }
-  }
+}
   
 
   

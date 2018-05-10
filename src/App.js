@@ -1,73 +1,80 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import PersonData from './components/PersonData';
-
-
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
-
+import Login from './components/views/login/Login';
 
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      dropdownOpen: false
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            activeId: this.workingIds[0],
+            dropdownOpen: false
+        };
+        this.updateContent = this.updateContent.bind(this);
+    }
 
-  toggle() {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
-  }
+    workingIds = [
+        5600493427,
+        6474994805,
+        6452522440,
+        5564535492,
+        6632408185,
+        4618604679,
+        5826752269,
+        3996179678,
+        7302651964,
+        1677401305,
+        6827859055,
+        3685610572,
+        6581985123,
+        3148148090
+    ];
 
-  render() {
-    return (
-      <div className="App">
-       
-        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret  color="default">
-          Dropdown
-        </DropdownToggle>
-        <DropdownMenu>
-          <DropdownItem>Another Action</DropdownItem>
-          <DropdownItem>Another Action</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+    toggle() {
+        this.setState(prevState => ({
+            dropdownOpen: !prevState.dropdownOpen
+        }));
+    }
 
-      <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
+    updateContent(e) {
+        this.setState({activeId: e.target.value})
+    }
 
+    _handleUserSelect = (selectedUserId) => {
+        console.log('selectedUserId', selectedUserId);
+        this.setState({
+            'activeId': selectedUserId
+        })
 
-        <PersonData calpersid="1677401305"/>
-        <p>
-        5600493427
-6474994805
-6452522440
-5564535492
-6632408185
-4618604679
-5826752269
-3996179678
-7302651964
-1677401305
-6827859055
-3685610572
-6581985123
-3148148090
-</p>
+    }
 
+    render() {
+        let {activeId} = this.state;
 
-      </div>
-    );
-  }
+        let personDataComponent = null;
+        if (activeId !== undefined) {
+            personDataComponent = (
+                <PersonData
+                    data={activeId}
+
+                />
+            );
+        }
+
+        return (
+            <div className="App">
+                <Route exact path="/" component={Login} />
+                <Route path="/dashboard" component={Login} />
+                <Login
+                    selectedUserId={activeId}
+                    onSelect={this._handleUserSelect}
+                />
+            </div>
+        );
+    }
 }
 
 export default App;
