@@ -47,14 +47,18 @@ export default class PersonData extends Component {
                     <Row>
                         <Col>
                 <div>
-                    {this.CALPERSID}
+                    
                     <h1>Welcome back, {userData.firstName}</h1>
                     <p>First Name: {userData.firstName}</p>
-                    <p>Miodle Name: {userData.middleName}</p>
+                    <p>Middle Name: {userData.middleName}</p>
                     <p>Last Name: {userData.lastName}</p>
-                    <p>Last Name: {userData.dateOfBirth}</p>
+                    <p>Date of birth: {userData.dateOfBirth}</p>
                     <p>Membership Date: {userData.membershipDate}</p>
-                    <p>First Name: {userData.firstName}</p>
+                    <p>Email: {userData.email}</p>
+                    <p>Phone: {userData.phones[0].number} - {userData.phones[0].phoneType.displayName}</p>
+
+             
+                    
                 </div>
                         </Col>
                     </Row>
