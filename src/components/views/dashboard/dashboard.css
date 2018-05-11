@@ -1,0 +1,11 @@
+.btn-rounded.btn-dashboard.btn.btn-primary {
+    font-weight: bold;
+}
+.btn-rounded.btn.btn-primary{
+    padding: .575rem 1.5rem;
+    border-radius: 2em;
+}
+.card-header, .card-footer {
+    background: #fff!important;
+    border: none!important;
+}

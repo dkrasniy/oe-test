@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Nav, Navbar} from 'reactstrap';
+import {Navbar, NavbarBrand} from 'reactstrap';
 
 export default class Header extends Component {
 
@@ -7,7 +7,7 @@ export default class Header extends Component {
         return (
             <React.Fragment>
                 <Navbar className="navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand m-auto" href="#"><strong>my</strong>|CalPERS</a>
+                    <NavbarBrand className="m-auto" href="#"><strong>my</strong>|CalPERS</NavbarBrand>
                 </Navbar>
             </React.Fragment>
         );
