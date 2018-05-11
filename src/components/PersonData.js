@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-
+import {
+    Container,
+    Row,
+    Col
+} from 'reactstrap';
 
 export default class PersonData extends Component {
 
@@ -11,16 +15,16 @@ export default class PersonData extends Component {
         }
     }
 
-    CALPERSID = this.props.data;
+    CALPERSID = this.props.selectedUserId;
 
     componentWillReceiveProps() {
         console.log("here");
-        fetch("http://ws-timo2-mycalpers.calpers.ca.gov/env08ws/restservices-interface/participant?cid=" + this.props.data)
+        fetch("http://ws-timo2-mycalpers.calpers.ca.gov/env08ws/restservices-interface/participant?cid=" + this.CALPERSID)
             .then((response) => response.json())
             .then((responseData) => {
                 this.setState({userData: responseData[0]});
             })
-        console.log(this.state);
+
     }
 
     componentDidMount() {
@@ -28,7 +32,7 @@ export default class PersonData extends Component {
             .then((response) => response.json())
             .then((responseData) => {
                 this.setState({userData: responseData[0]});
-            })
+        })
 
     }
 
@@ -39,14 +43,22 @@ export default class PersonData extends Component {
 
         if (userData !== null) {
             tempuserData = (
+                <Container>
+                    <Row>
+                        <Col>
                 <div>
                     {this.CALPERSID}
                     <h1>Welcome back, {userData.firstName}</h1>
                     <p>First Name: {userData.firstName}</p>
+                    <p>Miodle Name: {userData.middleName}</p>
                     <p>Last Name: {userData.lastName}</p>
+                    <p>Last Name: {userData.dateOfBirth}</p>
                     <p>Membership Date: {userData.membershipDate}</p>
                     <p>First Name: {userData.firstName}</p>
                 </div>
+                        </Col>
+                    </Row>
+                </Container>
             );
         }
 

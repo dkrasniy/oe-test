@@ -1,6 +1,19 @@
-import React, { Component } from 'react';
-import {Container, Row, Col, Form, Label, Input, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import React, {Component} from 'react';
+import {
+    Container,
+    Row,
+    Col,
+    Form,
+    Label,
+    Input,
+    Dropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+    Button
+} from 'reactstrap';
 import PropTypes from 'prop-types'
+import {Link, Redirect} from 'react-router-dom';
 
 import Header from './header/Header';
 
@@ -35,35 +48,42 @@ export default class Login extends Component {
             e.stopPropagation();
             onSelect(parseInt(e.target.value, 10));
         }
+
+    };
+    _handleClick = (e) => {
+        this.props.history.push("/dashboard");
     };
 
     render() {
         return (
-        <React.Fragment>
-            <Header/>
-            <Container>
-                <Row>
-                  <Col>
-                        <h1 className="page-header">Open Enrollment</h1>
-                        <p>Please sign in to continue</p>
-                        <Form>
-                        <Label className="float-label">Username</Label>
-                        {/*<Input type="text" class="form-control" id="loginUsername"/>*/}
+            <React.Fragment>
 
-                            <select onChange={this._handleSelect}>
-                                {this.workingIds.map((id) => {
-                                    return <option value={id} key={id}> {id} </option>
-                                })}
-                            </select>
+                <Container>
+                        <Row>
+                        <Col>
+                            <h1 className="page-header">Open Enrollment</h1>
+                            <p>Please sign in to continue</p>
+                            <Form>
+                                <Label className="float-label">Username</Label>
+                                {/*<Input type="text" class="form-control" id="loginUsername"/>*/}
 
-                        <a onClick={this._handleSelect} className="btn btn-primary btn-block" href="#/" role="button">Continue</a>
+                                <select onChange={this._handleSelect}>
+                                    {this.workingIds.map((id) => {
+                                        return <option value={id} key={id}> {id} </option>
+                                    })}
+                                </select>
+                                <br/>
 
-                        <p className="privacy-acknowledgement">By signing in, you agree to our <a href="">Terms & Conditions</a> and <a href="#">Privacy Statement</a>.</p>
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
-        </React.Fragment>
+                                <Button onClick={this._handleClick} color={"primary"}
+                                   role="button">Continue</Button>
+
+                                <p className="privacy-acknowledgement">By signing in, you agree to our <a href="">Terms
+                                    & Conditions</a> and <a href="#">Privacy Statement</a>.</p>
+                            </Form>
+                        </Col>
+                    </Row>
+                </Container>
+            </React.Fragment>
         );
     }
 }

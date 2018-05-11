@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import PersonData from './components/PersonData';
 import Login from './components/views/login/Login';
-
-
-class App extends Component {
+import Header from './components/views/login/header/Header';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";class App extends Component {
 
     constructor(props) {
         super(props);
@@ -66,19 +65,21 @@ class App extends Component {
 
         return (
             <div className="App">
-                <Route exact path="/" component={Login} />
-                <Route path="/dashboard" component={Login} />
-                <Login
-                    selectedUserId={activeId}
-                    onSelect={this._handleUserSelect}
-                />
+                <Router>
+                    <div className="App">
+                        <Header/>
+                        <Switch>
+                            <Route path="/" exact render={props => <Login selectedUserId={activeId}
+                                                                          onSelect={this._handleUserSelect} {...props}/>} />
+                            <Route path="/dashboard" render={props => <PersonData selectedUserId={activeId} {...props}/>} />
+                        </Switch>
+
+                    </div>
+                </Router>
             </div>
         );
     }
 }
 
 export default App;
-
-
-
 
