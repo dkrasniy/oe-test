@@ -6,6 +6,7 @@ import {
 } from 'reactstrap';
 import TabItem from './tabitem/TabItem';
 import PropTypes from 'prop-types'
+import {faCoffee, faSearch} from '@fortawesome/fontawesome-free-solid/'
 
 import './tabbar.css';
 
@@ -26,11 +27,11 @@ export default class TabBar extends Component {
             <React.Fragment>
                 <Navbar className="tabbar position-fixed">
                     <Container>
-                        <TabItem link={"//"} text={"Home"} icon={""}></TabItem>
-                        <TabItem link={""} text={"Change Plans"} icon={""}></TabItem>
-                        <TabItem link={""} text={"Compare Plans"} icon={""}></TabItem>
-                        <TabItem link={""} text={"Saved"} icon={""}></TabItem>
-                        <TabItem link={""} text={"Statements"} icon={""}></TabItem>
+                        <TabItem link={"/"} text={"Home"} faIcon={faCoffee}></TabItem>
+                        <TabItem link={"change-plans"} text={"Change Plans"} faIcon={faSearch}></TabItem>
+                        <TabItem link={"compare"} text={"Compare Plans"} faIcon={"search"}></TabItem>
+                        <TabItem link={"saved"} text={"Saved"} faIcon={"bookmark"}></TabItem>
+                        <TabItem link={"statements"} text={"Statements"} faIcon={"file-alt"}></TabItem>
                     </Container>
                 </Navbar>
             </React.Fragment>);
