@@ -1,5 +1,3 @@
-import fontawesome from '@fortawesome/fontawesome'
-
 import React, {Component} from 'react';
 import './App.css';
 import PersonData from './components/PersonData';

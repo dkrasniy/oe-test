@@ -4,6 +4,7 @@ import {
     Row,
     Col,
     Card,
+    CardImg,
     CardHeader,
     CardTitle,
     CardText,
@@ -58,37 +59,29 @@ export default class Dashboard extends Component {
             tempuserData = (
                 <React.Fragment>
                     <Container>
+                        <h1 className="page-header">Welcome, {this.state.userData.firstName}</h1>
                         <Row>
                             <Col>
-                                <h1 className="page-header">Welcome, {this.state.userData.firstName}</h1>
-                                <Card>
+                                <h2 className="page-header card-section-label">2019 Open Enrollment</h2>
+                                <Card className="text-center">
+                                    <CardImg className="main-image" src={"./assets/undraw_events_2p66.svg"} />
                                     <CardBody>
-                                        <CardText>Important notifications need attention</CardText>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <h2 className="page-header">2019 Open Enrollment</h2>
-                                <Card>
-                                    <CardHeader>Open Enrollment Plan & Compare</CardHeader>
-                                    <CardBody>
+                                        <h2 className="">Open Enrollment Plan & Compare</h2>
                                         <CardText>Open Enrollment beings September 15, 2018 and ends October 15, 2018</CardText>
+                                        <Button className="btn-rounded btn-dashboard" color={"primary"}>Explore 2019 Plan Options</Button>
                                     </CardBody>
-                                    <CardFooter className="text-center">
-                                            <Button className="btn-rounded btn-dashboard" color={"primary"}>Explore 2019 Plan Options</Button>
-                                    </CardFooter>
                                 </Card>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <h2 className="page-header">Health Plan Summary</h2>
+                                <h2 className="page-header card-section-label">Health Plan Summary</h2>
                                 <Card>
                                     <CardHeader>Your Medical Plan</CardHeader>
                                     <CardBody>
                                             <CardText>Kaiser Permanente</CardText>
+                                            <CardText>Coverage Type</CardText>
+                                            <CardText>Premium</CardText>
                                     </CardBody>
                                 </Card>
                                 <Card>

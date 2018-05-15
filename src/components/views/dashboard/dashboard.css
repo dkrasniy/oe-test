@@ -5,7 +5,37 @@
     padding: .575rem 1.5rem;
     border-radius: 2em;
 }
+.card.notification {
+    color: #fff;
+    background: red;
+}
+.card-section-label {
+    color: #535461;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 20px 10px 10px 5px;
+}
+.card-image.main {
+    background: #3D7CBF1A;
+    padding: 50px 350px;
+}
+.main-image {
+    padding: 25px 90px;
+    background: #3D7CBF1A;
+    max-height: 250px;
+}
+.card-body {
+    padding: 1em;
+}
+.card-body h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
 .card-header, .card-footer {
     background: #fff!important;
     border: none!important;
+}
+.card-text {
+    color: #838383;
 }

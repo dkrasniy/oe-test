@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import {Col} from 'reactstrap'
+import fontawesome from '@fortawesome/fontawesome'
 
 import './tabitem.css';
 
 export default class TabItem extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         let {text, link, icon} = this.props;
@@ -16,7 +13,7 @@ export default class TabItem extends Component {
                 <Col>
                     <a href={link}>
                         <div className="icon">
-                            {fontawesome.icon({ prefix: 'fas', iconName: icon })}
+                            {fontawesome.icon({ prefix: 'fas', iconName: "user" })}
                         </div>
                         <span className="menu-item-name">{text}</span>
                     </a>
@@ -24,6 +21,3 @@ export default class TabItem extends Component {
             </React.Fragment>);
     }
 }
-
-
-
